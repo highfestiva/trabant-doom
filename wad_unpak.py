@@ -6,7 +6,6 @@ from collections import defaultdict
 from struct import unpack
 from trabant.math import vec3
 
-scale    = 10
 linedefs = []
 sidedefs = []
 vertexes = []
@@ -36,7 +35,7 @@ def vtxs(d):
 	global vertexes
 	for i in range(0, len(d), 4):
 		x,y = rdshort(d[i+0:i+2]),rdshort(d[i+2:i+4])
-		x,y = x/scale,y/scale
+		x,y = x,y
 		vertexes += [(x,y)]
 
 def sgs(d):
@@ -55,7 +54,7 @@ def sects(d):
 	global sectors
 	for i in range(0, len(d), 26):
 		z1,z2 = rdshort(d[i+0:i+2]),rdshort(d[i+2:i+4])
-		z1,z2 = z1/scale,z2/scale
+		z1,z2 = z1,z2
 		sectors += [(z1,z2)]
 
 def dowrite(**kwargs):
